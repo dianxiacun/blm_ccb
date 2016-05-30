@@ -5,6 +5,7 @@ var notify = {};
 notify.verify = function(request, response) {
 	console.log('req body: ', request.params);
 	let originalUrl = request.originalUrl;
+	console.log('notify_url: ', originalUrl);
 	let index = originalUrl.indexOf('?') + 1;
 	let verifiedData = originalUrl.slice(index) + '\n';
 
