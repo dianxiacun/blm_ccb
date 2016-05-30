@@ -1,3 +1,4 @@
+'use strict'
 var util = require('../module/util.js');
 var config = require('../config');
 var qs = require('querystring');
@@ -5,16 +6,16 @@ var qs = require('querystring');
 var payment = {};
 
 payment.getPaymentUrl = function(request) {
-	var orderId = request.body.orderId;
-	var price = request.body.payment; 
+	let orderId = request.body.orderId;
+	let price = request.body.payment; 
 	// try {
 	// 	if (!orderId) throw 'order id is empty!';
 	// 	if (parseFloat(price))
 	// }
 	// if (!orderId) {}
-	// var { orderId, price, remark1, remark2} = request.body;
+	// let { orderId, price, remark1, remark2} = request.body;
 	// 以下data为生成MAC校验位，不做为数据发送
-	var data = {
+	let data = {
 	    MERCHANTID: config.blmApp.MERCHANTID,   //商户代码，建行分配，必填
 	    POSID: config.blmApp.POSID,  		    //商户柜台代码，建行分配，必填
 	    BRANCHID: config.blmApp.BRANCHID,  	    //分行代码，建行分配，必填
@@ -32,10 +33,10 @@ payment.getPaymentUrl = function(request) {
 	    PROINFO: '',  							//商品信息，中文需使用escape编码，选填
 	    REFERER: ''  							//商户URL，缺省即可，选填
 	};
-	var mac = util.md5Encode(qs.stringify(data));
+	let mac = util.md5Encode(qs.stringify(data));
 	console.log('mac: ', mac);
 
-	var formalData = {
+	let formalData = {
 	    MERCHANTID: config.blmApp.MERCHANTID,   //商户代码，建行分配，必填
 	    POSID: config.blmApp.POSID,  			//商户柜台代码，建行分配，必填
 	    BRANCHID: config.blmApp.BRANCHID,  		//分行代码，建行分配，必填
@@ -54,7 +55,7 @@ payment.getPaymentUrl = function(request) {
 	    MAC: mac  								//MAC校验域
 	};
 
-	var paymentUrl = 'https://ibsbjstar.ccb.com.cn/app/ccbMain?' + qs.stringify(formalData);
+	let paymentUrl = 'https://ibsbjstar.ccb.com.cn/app/ccbMain?' + qs.stringify(formalData);
 	console.log('payment url: ', paymentUrl);
 	return paymentUrl;
 };
