@@ -4,13 +4,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 	var result = notify.verify(req);
-	console.log('verified result: ', result);
-	if (!result.isNormal) {
-		res.status(500).send('something is wrong with the verified server...');
-	} else {
-		res.send({ isVerified: result.isVerified });
-	}
-  	
+	console.log('verified result: ', result); 	
 });
 
 module.exports = router;

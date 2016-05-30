@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
 	}
 	console.log('object: ', description);
 	var ccbPaymentUrl = payment.getPaymentUrl(req);
-  	res.send(ccbPaymentUrl);
+  	res.send({result: {paymentUrl: ccbPaymentUrl}});
 });
 
 module.exports = router;
