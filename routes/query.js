@@ -1,11 +1,11 @@
 'use strict'
 var express = require('express');
-var payment = require('../service/payment.js');
+var query = require('../service/ccb_batch_query.js');
 var router = express.Router();
 
 router.post('/', function(req, res, next) {
-	let CCBPaymentURL = payment.getPaymentURL(req);
-  	res.send({result: {paymentURL: CCBPaymentURL}});
+	let queryURL = query.CCBBatchQuery(req);
+  	res.send({result: {queryURL: queryURL}});
 });
 
 module.exports = router;

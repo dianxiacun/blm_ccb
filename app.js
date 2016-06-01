@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 app.use('/ccb_notify', require('./routes/notify'));
+app.use('/ccb_batch_query', require(('./routes/query')));
 app.use('/payment', require('./routes/payment'));
 
 // catch 404 and forward to error handler

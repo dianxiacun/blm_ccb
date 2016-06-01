@@ -1,11 +1,11 @@
-'use strict'
+'use strict';
 var util = require('../module/util.js');
 var config = require('../config');
 var qs = require('querystring');
 
 var payment = {};
 
-payment.getPaymentUrl = function(request) {
+payment.getPaymentURL = function(request) {
 	let orderId = request.body.orderId;
 	let price = request.body.payment; 
 	// try {
@@ -55,9 +55,9 @@ payment.getPaymentUrl = function(request) {
 	    MAC: mac  								//MAC校验域
 	};
 
-	let paymentUrl = 'https://ibsbjstar.ccb.com.cn/app/ccbMain?' + qs.stringify(formalData);
-	console.log('payment url: ', paymentUrl);
-	return paymentUrl;
+	let paymentURL = 'https://ibsbjstar.ccb.com.cn/app/ccbMain?' + qs.stringify(formalData);
+	console.log('payment url: ', paymentURL);
+	return paymentURL;
 };
 
 module.exports = payment;

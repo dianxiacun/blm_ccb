@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const net = require('net');
 var notify = {};
 
@@ -36,6 +36,6 @@ notify.verify = function(request, response) {
 	client.on('end', () => {
 		console.log('disconnected from the server');
 	})
-}
+};
 
 module.exports = notify;
